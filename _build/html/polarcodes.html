@@ -1,0 +1,1037 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>polarcodes package &mdash; Polar Codes in Python 1.1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Polar Codes in Python
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">polarcodes package</a><ul>
+<li><a class="reference internal" href="#submodules">Submodules</a></li>
+<li><a class="reference internal" href="#module-polarcodes.AWGN">polarcodes.AWGN module</a></li>
+<li><a class="reference internal" href="#polarcodes-construct-module">polarcodes.Construct module</a></li>
+<li><a class="reference internal" href="#module-polarcodes.Decode">polarcodes.Decode module</a></li>
+<li><a class="reference internal" href="#module-polarcodes.Encode">polarcodes.Encode module</a></li>
+<li><a class="reference internal" href="#module-polarcodes.GUI">polarcodes.GUI module</a></li>
+<li><a class="reference internal" href="#module-polarcodes.Math">polarcodes.Math module</a></li>
+<li><a class="reference internal" href="#module-polarcodes.PolarCode">polarcodes.PolarCode module</a></li>
+<li><a class="reference internal" href="#module-polarcodes.Puncture">polarcodes.Puncture module</a></li>
+<li><a class="reference internal" href="#module-polarcodes.Shorten">polarcodes.Shorten module</a></li>
+<li><a class="reference internal" href="#module-polarcodes">Module contents</a><ul>
+<li><a class="reference internal" href="#polar-codes-in-python">Polar Codes in Python</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Polar Codes in Python</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>polarcodes package</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/polarcodes.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="polarcodes-package">
+<h1>polarcodes package<a class="headerlink" href="#polarcodes-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-polarcodes.AWGN">
+<span id="polarcodes-awgn-module"></span><h2>polarcodes.AWGN module<a class="headerlink" href="#module-polarcodes.AWGN" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="polarcodes.AWGN.AWGN">
+<em class="property">class </em><code class="sig-prename descclassname">polarcodes.AWGN.</code><code class="sig-name descname">AWGN</code><span class="sig-paren">(</span><em class="sig-param">myPC</em>, <em class="sig-param">Eb_No</em>, <em class="sig-param">plot_noise=False</em><span class="sig-paren">)</span><a class="headerlink" href="#polarcodes.AWGN.AWGN" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="method">
+<dt id="polarcodes.AWGN.AWGN.LLR">
+<code class="sig-name descname">LLR</code><span class="sig-paren">(</span><em class="sig-param">y</em><span class="sig-paren">)</span><a class="headerlink" href="#polarcodes.AWGN.AWGN.LLR" title="Permalink to this definition">¶</a></dt>
+<dd><p>Finds the log-likelihood ratio of a received signal.
+LLR = Pr(y=0)/Pr(y=1).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>y</strong> (<em>float</em>) – a received signal from a gaussian-distributed channel</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>log-likelihood ratio for the input signal <a href="#id1"><span class="problematic" id="id2">:param:`y`</span></a></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="polarcodes.AWGN.AWGN.get_likelihoods">
+<code class="sig-name descname">get_likelihoods</code><span class="sig-paren">(</span><em class="sig-param">y</em><span class="sig-paren">)</span><a class="headerlink" href="#polarcodes.AWGN.AWGN.get_likelihoods" title="Permalink to this definition">¶</a></dt>
+<dd><p>Finds the log-likelihood ratio of an ensemble of received signals using <a class="reference internal" href="#polarcodes.AWGN.AWGN.LLR" title="polarcodes.AWGN.AWGN.LLR"><code class="xref py py-func docutils literal notranslate"><span class="pre">LLR()</span></code></a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>y</strong> (<em>ndarray&lt;float&gt;</em>) – an ensemble of received signals</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>log-likelihood ratios for the input signals <a href="#id3"><span class="problematic" id="id4">:param:`y`</span></a></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>ndarray&lt;float&gt;</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="polarcodes.AWGN.AWGN.modulation">
+<code class="sig-name descname">modulation</code><span class="sig-paren">(</span><em class="sig-param">x</em><span class="sig-paren">)</span><a class="headerlink" href="#polarcodes.AWGN.AWGN.modulation" title="Permalink to this definition">¶</a></dt>
+<dd><p>BPSK modulation for a bit field.
+“1” maps to +sqrt(E_s) and “0” maps to -sqrt(E_s).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>x</strong> (<em>ndarray&lt;int&gt;</em>) – an ensemble of information to send</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Modulated signal with the information from <a href="#id5"><span class="problematic" id="id6">:param:`x`</span></a></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>ndarray&lt;float&gt;</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="polarcodes.AWGN.AWGN.noise">
+<code class="sig-name descname">noise</code><span class="sig-paren">(</span><em class="sig-param">N</em><span class="sig-paren">)</span><a class="headerlink" href="#polarcodes.AWGN.AWGN.noise" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate gaussian noise with a specified noise power.
+For a noise power N_o, the double-side noise power is N_o/2.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>N</strong> (<em>float</em>) – the noise power</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>white gaussian noise vector</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>ndarray&lt;float&gt;</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="polarcodes.AWGN.AWGN.show_noise">
+<code class="sig-name descname">show_noise</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#polarcodes.AWGN.AWGN.show_noise" title="Permalink to this definition">¶</a></dt>
+<dd><p>Trigger showing the gaussian noise. Only works if <a href="#id7"><span class="problematic" id="id8">:param:`plot_noise`</span></a> is True.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="polarcodes-construct-module">
+<h2>polarcodes.Construct module<a class="headerlink" href="#polarcodes-construct-module" title="Permalink to this headline">¶</a></h2>
+<dl class="attribute">
+<dt id="polarcodes.Construct">
+<code class="sig-prename descclassname">polarcodes.</code><code class="sig-name descname">Construct</code><a class="headerlink" href="#polarcodes.Construct" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <a class="reference internal" href="#module-polarcodes.Construct" title="polarcodes.Construct"><code class="xref py py-class docutils literal notranslate"><span class="pre">polarcodes.Construct</span></code></a></p>
+</dd></dl>
+
+<span class="target" id="module-polarcodes.Construct"></span><dl class="class">
+<dt id="polarcodes.Construct.Construct">
+<em class="property">class </em><code class="sig-prename descclassname">polarcodes.Construct.</code><code class="sig-name descname">Construct</code><span class="sig-paren">(</span><em class="sig-param">myPC</em>, <em class="sig-param">design_SNR</em>, <em class="sig-param">manual=False</em><span class="sig-paren">)</span><a class="headerlink" href="#polarcodes.Construct.Construct" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#polarcodes.Math.Math" title="polarcodes.Math.Math"><code class="xref py py-class docutils literal notranslate"><span class="pre">polarcodes.Math.Math</span></code></a></p>
+<dl class="method">
+<dt id="polarcodes.Construct.Construct.general_ga">
+<code class="sig-name descname">general_ga</code><span class="sig-paren">(</span><em class="sig-param">myPC</em>, <em class="sig-param">z0</em><span class="sig-paren">)</span><a class="headerlink" href="#polarcodes.Construct.Construct.general_ga" title="Permalink to this definition">¶</a></dt>
+<dd><p>Polar code construction using density evolution with the Gaussian Approximation. Each channel can have different parameters.
+References:
+[1] Trifonov, P. (2012). Efficient Design and Decoding of Polar Codes. IEEE Transactions on Communications, 60(11), 3221–3227.
+<a class="reference external" href="https://doi.org/10.1109/TCOMM.2012.081512.110872">https://doi.org/10.1109/TCOMM.2012.081512.110872</a>
+[2] Vangala, H., Viterbo, E., &amp; Hong, Y. (2015). A Comparative Study of Polar Code Constructions for the AWGN Channel. arXiv.org.
+Retrieved from <a class="reference external" href="http://search.proquest.com/docview/2081709282/">http://search.proquest.com/docview/2081709282/</a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>z0</strong> (<em>ndarray&lt;float&gt;</em><em> or </em><em>float</em>) – a vector of the initial mean likelihood densities, 4 * E_b/N_o.
+Note that this SNR should be normalised using <code class="xref py py-func docutils literal notranslate"><span class="pre">get_normalised_SNR()</span></code> in <code class="xref py py-class docutils literal notranslate"><span class="pre">PolarCode</span></code></p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>channel reliabilities in log-domain (least reliable first), and the frozen indices</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>ndarray&lt;int&gt;, ndarray&lt;int&gt;</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="polarcodes.Construct.Construct.general_pcc">
+<code class="sig-name descname">general_pcc</code><span class="sig-paren">(</span><em class="sig-param">myPC</em>, <em class="sig-param">z0</em><span class="sig-paren">)</span><a class="headerlink" href="#polarcodes.Construct.Construct.general_pcc" title="Permalink to this definition">¶</a></dt>
+<dd><p>Polar code construction using Bhattacharyya Bounds. Each bit-channel can have different parameters.
+Supports shortening by adding extra cases for infinite likelihoods.
+Reference: Vangala, H., Viterbo, E., &amp; Hong, Y. (2015). A Comparative Study of Polar Code Constructions for the AWGN Channel. arXiv.org.
+Retrieved from <a class="reference external" href="http://search.proquest.com/docview/2081709282/">http://search.proquest.com/docview/2081709282/</a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>z0</strong> (<em>ndarray&lt;float&gt;</em><em> or </em><em>float</em>) – a vector of the initial Bhattacharyya parameters in the log-domain, -E_b/N_o.
+Note that this SNR should be normalised using <code class="xref py py-func docutils literal notranslate"><span class="pre">get_normalised_SNR()</span></code> in <code class="xref py py-class docutils literal notranslate"><span class="pre">PolarCode</span></code></p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>channel reliabilities in log-domain (least reliable first), and the frozen indices</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>ndarray&lt;int&gt;, ndarray&lt;int&gt;</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="polarcodes.Construct.Construct.perfect_pcc">
+<code class="sig-name descname">perfect_pcc</code><span class="sig-paren">(</span><em class="sig-param">myPC</em>, <em class="sig-param">p</em><span class="sig-paren">)</span><a class="headerlink" href="#polarcodes.Construct.Construct.perfect_pcc" title="Permalink to this definition">¶</a></dt>
+<dd><p>Boolean expression approach to puncturing pattern construction.
+Reference: Song-Nam, H., &amp; Hui, D. (2018). On the Analysis of Puncturing for Finite-Length Polar Codes: Boolean Function Approach. arXiv.org.
+Retrieved from <a class="reference external" href="http://search.proquest.com/docview/2071252269/">http://search.proquest.com/docview/2071252269/</a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>p</strong> (<em>ndarray&lt;int&gt;</em>) – lookup table for coded puncturing bits. “0” =&gt; punctured, “1” =&gt; information.
+For shortening, take the complement of p.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>a lookup table for which uncoded bits should be punctured.
+For shortening, take the complement of this output.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>ndarray&lt;int&gt;</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="polarcodes.Construct.Construct.update_mpcc">
+<code class="sig-name descname">update_mpcc</code><span class="sig-paren">(</span><em class="sig-param">myPC</em>, <em class="sig-param">design_SNR</em><span class="sig-paren">)</span><a class="headerlink" href="#polarcodes.Construct.Construct.update_mpcc" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-polarcodes.Decode">
+<span id="polarcodes-decode-module"></span><h2>polarcodes.Decode module<a class="headerlink" href="#module-polarcodes.Decode" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="polarcodes.Decode.Decode">
+<em class="property">class </em><code class="sig-prename descclassname">polarcodes.Decode.</code><code class="sig-name descname">Decode</code><span class="sig-paren">(</span><em class="sig-param">myPC</em>, <em class="sig-param">decoder_name='scd'</em><span class="sig-paren">)</span><a class="headerlink" href="#polarcodes.Decode.Decode" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#polarcodes.Math.Math" title="polarcodes.Math.Math"><code class="xref py py-class docutils literal notranslate"><span class="pre">polarcodes.Math.Math</span></code></a></p>
+<dl class="method">
+<dt id="polarcodes.Decode.Decode.lower_llr">
+<code class="sig-name descname">lower_llr</code><span class="sig-paren">(</span><em class="sig-param">l1</em>, <em class="sig-param">l2</em>, <em class="sig-param">b</em><span class="sig-paren">)</span><a class="headerlink" href="#polarcodes.Decode.Decode.lower_llr" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update bottom branch LLR in the log-domain.
+This function supports shortening by checking for infinite LLR cases.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>l1</strong> (<em>float</em>) – input LLR corresponding to the top branch</p></li>
+<li><p><strong>l2</strong> (<em>float</em>) – input LLR corresponding to the bottom branch</p></li>
+<li><p><strong>b</strong> (<em>int</em>) – the decoded bit of the top branch</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the bottom branch LLR at the next stage of the decoding tree</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float or np.nan</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="polarcodes.Decode.Decode.polar_decode">
+<code class="sig-name descname">polar_decode</code><span class="sig-paren">(</span><em class="sig-param">y</em><span class="sig-paren">)</span><a class="headerlink" href="#polarcodes.Decode.Decode.polar_decode" title="Permalink to this definition">¶</a></dt>
+<dd><p>Successive Cancellation Decoder. The decoded message is set to <a href="#id9"><span class="problematic" id="id10">:param:`message_received`</span></a> in <a href="#id11"><span class="problematic" id="id12">:param:`myPC`</span></a>.
+The decoder will use the frozen set as defined by <a href="#id13"><span class="problematic" id="id14">:param:`frozen`</span></a> in <a href="#id15"><span class="problematic" id="id16">:param:`myPC`</span></a>.
+Depends on <a class="reference internal" href="#polarcodes.Decode.Decode.update_LLR_recursive" title="polarcodes.Decode.Decode.update_LLR_recursive"><code class="xref py py-func docutils literal notranslate"><span class="pre">update_LLR_recursive()</span></code></a> and <a class="reference internal" href="#polarcodes.Decode.Decode.update_bits" title="polarcodes.Decode.Decode.update_bits"><code class="xref py py-func docutils literal notranslate"><span class="pre">update_bits()</span></code></a>.
+Reference: Vangala, H., Viterbo, &amp; Yi Hong. (2014). Permuted successive cancellation decoder for polar codes.
+2014 International Symposium on Information Theory and Its Applications, 438–442. IEICE.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>y</strong> (<em>ndarray&lt;float&gt;</em>) – a vector of likelihoods at the channel output</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="polarcodes.Decode.Decode.update_LLR">
+<code class="sig-name descname">update_LLR</code><span class="sig-paren">(</span><em class="sig-param">x_ind</em><span class="sig-paren">)</span><a class="headerlink" href="#polarcodes.Decode.Decode.update_LLR" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update all possible likelihoods at stage (n-j).
+This is a non-recursive implementation of <a class="reference internal" href="#polarcodes.Decode.Decode.update_LLR_recursive" title="polarcodes.Decode.Decode.update_LLR_recursive"><code class="xref py py-func docutils literal notranslate"><span class="pre">update_LLR_recursive()</span></code></a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>x_ind</strong> (<em>ind</em>) – the root index of a tree in the decoder graph</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="polarcodes.Decode.Decode.update_LLR_recursive">
+<code class="sig-name descname">update_LLR_recursive</code><span class="sig-paren">(</span><em class="sig-param">i</em>, <em class="sig-param">j</em><span class="sig-paren">)</span><a class="headerlink" href="#polarcodes.Decode.Decode.update_LLR_recursive" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update all possible likelihoods at stage (n-j).
+This is a recursive implementation of <a class="reference internal" href="#polarcodes.Decode.Decode.update_LLR" title="polarcodes.Decode.Decode.update_LLR"><code class="xref py py-func docutils literal notranslate"><span class="pre">update_LLR()</span></code></a>.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="polarcodes.Decode.Decode.update_bits">
+<code class="sig-name descname">update_bits</code><span class="sig-paren">(</span><em class="sig-param">x_ind</em><span class="sig-paren">)</span><a class="headerlink" href="#polarcodes.Decode.Decode.update_bits" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update all possible bits at stage (n-j).
+This is a non-recursive implementation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>x_ind</strong> (<em>ind</em>) – the root index of a tree in the decoder graph</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="polarcodes.Decode.Decode.upper_llr">
+<code class="sig-name descname">upper_llr</code><span class="sig-paren">(</span><em class="sig-param">l1</em>, <em class="sig-param">l2</em><span class="sig-paren">)</span><a class="headerlink" href="#polarcodes.Decode.Decode.upper_llr" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update top branch LLR in the log-domain.
+This function supports shortening by checking for infinite LLR cases.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>l1</strong> (<em>float</em>) – input LLR corresponding to the top branch</p></li>
+<li><p><strong>l2</strong> (<em>float</em>) – input LLR corresponding to the bottom branch</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the top branch LLR at the next stage of the decoding tree</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-polarcodes.Encode">
+<span id="polarcodes-encode-module"></span><h2>polarcodes.Encode module<a class="headerlink" href="#module-polarcodes.Encode" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="polarcodes.Encode.Encode">
+<em class="property">class </em><code class="sig-prename descclassname">polarcodes.Encode.</code><code class="sig-name descname">Encode</code><span class="sig-paren">(</span><em class="sig-param">myPC</em>, <em class="sig-param">encoder_name='polar_encode'</em><span class="sig-paren">)</span><a class="headerlink" href="#polarcodes.Encode.Encode" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#polarcodes.Math.Math" title="polarcodes.Math.Math"><code class="xref py py-class docutils literal notranslate"><span class="pre">polarcodes.Math.Math</span></code></a></p>
+<dl class="method">
+<dt id="polarcodes.Encode.Encode.polar_encode">
+<code class="sig-name descname">polar_encode</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#polarcodes.Encode.Encode.polar_encode" title="Permalink to this definition">¶</a></dt>
+<dd><p>Encodes a message using polar coding with a non-recursive implementation.
+The message <a href="#id17"><span class="problematic" id="id18">:param:`x`</span></a> is encoded using in-place operations of output <a href="#id19"><span class="problematic" id="id20">:param:`u`</span></a> in <a href="#id21"><span class="problematic" id="id22">:param:`myPC`</span></a>.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="polarcodes.Encode.Encode.polar_encode2">
+<code class="sig-name descname">polar_encode2</code><span class="sig-paren">(</span><em class="sig-param">i1</em>, <em class="sig-param">i2</em><span class="sig-paren">)</span><a class="headerlink" href="#polarcodes.Encode.Encode.polar_encode2" title="Permalink to this definition">¶</a></dt>
+<dd><p>Encodes a message using polar coding with a recursive implementation.
+The message <a href="#id23"><span class="problematic" id="id24">:param:`x`</span></a> is encoded using in-place operations of output <a href="#id25"><span class="problematic" id="id26">:param:`u`</span></a> in <a href="#id27"><span class="problematic" id="id28">:param:`myPC`</span></a>.
+The initial call of <a class="reference internal" href="#polarcodes.Encode.Encode.polar_encode2" title="polarcodes.Encode.Encode.polar_encode2"><code class="xref py py-func docutils literal notranslate"><span class="pre">polar_encode2()</span></code></a> should set (i1, i2) = (0, N-1) for a block length N.
+For example, the second partition indices will be (0, N/2-1) and (N/2, N-1).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>i1</strong> (<em>int</em>) – start index of the partition</p></li>
+<li><p><strong>i2</strong> (<em>int</em>) – end index of the partition</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-polarcodes.GUI">
+<span id="polarcodes-gui-module"></span><h2>polarcodes.GUI module<a class="headerlink" href="#module-polarcodes.GUI" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="polarcodes.GUI.GUI">
+<em class="property">class </em><code class="sig-prename descclassname">polarcodes.GUI.</code><code class="sig-name descname">GUI</code><span class="sig-paren">(</span><em class="sig-param">master</em>, <em class="sig-param">myPC</em><span class="sig-paren">)</span><a class="headerlink" href="#polarcodes.GUI.GUI" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="method">
+<dt id="polarcodes.GUI.GUI.make_footer">
+<code class="sig-name descname">make_footer</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#polarcodes.GUI.GUI.make_footer" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="polarcodes.GUI.GUI.make_inputs">
+<code class="sig-name descname">make_inputs</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#polarcodes.GUI.GUI.make_inputs" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="polarcodes.GUI.GUI.make_plot">
+<code class="sig-name descname">make_plot</code><span class="sig-paren">(</span><em class="sig-param">fig</em><span class="sig-paren">)</span><a class="headerlink" href="#polarcodes.GUI.GUI.make_plot" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="polarcodes.GUI.GUI.update_dict">
+<code class="sig-name descname">update_dict</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#polarcodes.GUI.GUI.update_dict" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-polarcodes.Math">
+<span id="polarcodes-math-module"></span><h2>polarcodes.Math module<a class="headerlink" href="#module-polarcodes.Math" title="Permalink to this headline">¶</a></h2>
+<p>Math provides miscellaneous math operations to the other classes, which are important for polar codes
+algorithm implementations.</p>
+<dl class="class">
+<dt id="polarcodes.Math.Math">
+<em class="property">class </em><code class="sig-prename descclassname">polarcodes.Math.</code><code class="sig-name descname">Math</code><a class="headerlink" href="#polarcodes.Math.Math" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="method">
+<dt id="polarcodes.Math.Math.arikan_gen">
+<code class="sig-name descname">arikan_gen</code><span class="sig-paren">(</span><em class="sig-param">n</em><span class="sig-paren">)</span><a class="headerlink" href="#polarcodes.Math.Math.arikan_gen" title="Permalink to this definition">¶</a></dt>
+<dd><p>The n-th kronecker product of [[1, 1], [0, 1]], commonly referred to as Arikan’s kernel.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>n</strong> (<em>int</em>) – log2(N), where N is the block length</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>polar code generator matrix</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>ndarray&lt;int&gt;</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="polarcodes.Math.Math.bisection">
+<code class="sig-name descname">bisection</code><span class="sig-paren">(</span><em class="sig-param">val</em>, <em class="sig-param">a</em>, <em class="sig-param">b</em><span class="sig-paren">)</span><a class="headerlink" href="#polarcodes.Math.Math.bisection" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="polarcodes.Math.Math.bit_perm">
+<code class="sig-name descname">bit_perm</code><span class="sig-paren">(</span><em class="sig-param">x</em>, <em class="sig-param">p</em>, <em class="sig-param">n</em><span class="sig-paren">)</span><a class="headerlink" href="#polarcodes.Math.Math.bit_perm" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>Description:</dt><dd><p>Find the permutation of an index.</p>
+</dd>
+<dt>Arguments:</dt><dd><p>x – an index.
+p – permutation vector, ex: bit-reversal is (0,1,…,n-1)
+n – number of bits in x.</p>
+</dd>
+<dt>Returns:</dt><dd><p>The permuted index.</p>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>ndarray&lt;int&gt;</em><em> or </em><em>int</em>) – a vector of indices</p></li>
+<li><p><strong>p</strong> (<em>ndarray&lt;int&gt;</em>) – permutation vector, ex: bit-reversal is (0,1,…,n-1)</p></li>
+<li><p><strong>n</strong> (<em>int</em>) – number of bits per index in <a href="#id29"><span class="problematic" id="id30">:param:`x`</span></a></p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>permuted indices</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>ndarray&lt;int&gt; or int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="polarcodes.Math.Math.bit_reversed">
+<code class="sig-name descname">bit_reversed</code><span class="sig-paren">(</span><em class="sig-param">x</em>, <em class="sig-param">n</em><span class="sig-paren">)</span><a class="headerlink" href="#polarcodes.Math.Math.bit_reversed" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bit-reversal operation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>ndarray&lt;int&gt;</em><em> or </em><em>int</em>) – a vector of indices</p></li>
+<li><p><strong>n</strong> (<em>int</em>) – number of bits per index in <a href="#id31"><span class="problematic" id="id32">:param:`x`</span></a></p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>bit-reversed version of x</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>ndarray&lt;int&gt; or int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="polarcodes.Math.Math.hamming_wt">
+<code class="sig-name descname">hamming_wt</code><span class="sig-paren">(</span><em class="sig-param">x</em>, <em class="sig-param">n</em><span class="sig-paren">)</span><a class="headerlink" href="#polarcodes.Math.Math.hamming_wt" title="Permalink to this definition">¶</a></dt>
+<dd><p>Find the bit-wise hamming weight of an index.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>int</em>) – an index</p></li>
+<li><p><strong>n</strong> (<em>int</em>) – number of bits in <a href="#id33"><span class="problematic" id="id34">:param:`x`</span></a></p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>bit-wise hamming weight of <a href="#id35"><span class="problematic" id="id36">:param:`x`</span></a></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="polarcodes.Math.Math.inverse_set">
+<code class="sig-name descname">inverse_set</code><span class="sig-paren">(</span><em class="sig-param">F</em>, <em class="sig-param">N</em><span class="sig-paren">)</span><a class="headerlink" href="#polarcodes.Math.Math.inverse_set" title="Permalink to this definition">¶</a></dt>
+<dd><p>Find {0,1,…,N-1}F. This is useful for finding the information set given a frozen set as <a href="#id37"><span class="problematic" id="id38">:param:`F`</span></a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>F</strong> (<em>ndarray&lt;int&gt;</em>) – a vector of indices</p></li>
+<li><p><strong>N</strong> (<em>int</em>) – block length</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>inverted set as a vector</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>ndarray&lt;int&gt;</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="polarcodes.Math.Math.logQ_Borjesson">
+<code class="sig-name descname">logQ_Borjesson</code><span class="sig-paren">(</span><em class="sig-param">x</em><span class="sig-paren">)</span><a class="headerlink" href="#polarcodes.Math.Math.logQ_Borjesson" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="polarcodes.Math.Math.logdomain_diff">
+<code class="sig-name descname">logdomain_diff</code><span class="sig-paren">(</span><em class="sig-param">x</em>, <em class="sig-param">y</em><span class="sig-paren">)</span><a class="headerlink" href="#polarcodes.Math.Math.logdomain_diff" title="Permalink to this definition">¶</a></dt>
+<dd><p>Find the difference between x and y in log-domain. It uses log1p to improve numerical stability.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>float</em>) – any number in the log-domain</p></li>
+<li><p><strong>y</strong> (<em>float</em>) – any number in the log-domain</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the result of x - y</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="polarcodes.Math.Math.logdomain_sum">
+<code class="sig-name descname">logdomain_sum</code><span class="sig-paren">(</span><em class="sig-param">x</em>, <em class="sig-param">y</em><span class="sig-paren">)</span><a class="headerlink" href="#polarcodes.Math.Math.logdomain_sum" title="Permalink to this definition">¶</a></dt>
+<dd><p>Find the addition of x and y in log-domain. It uses log1p to improve numerical stability.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>float</em>) – any number in the log-domain</p></li>
+<li><p><strong>y</strong> (<em>float</em>) – any number in the log-domain</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the result of x + y</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="polarcodes.Math.Math.phi">
+<code class="sig-name descname">phi</code><span class="sig-paren">(</span><em class="sig-param">x</em><span class="sig-paren">)</span><a class="headerlink" href="#polarcodes.Math.Math.phi" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="polarcodes.Math.Math.phi_inv">
+<code class="sig-name descname">phi_inv</code><span class="sig-paren">(</span><em class="sig-param">y</em><span class="sig-paren">)</span><a class="headerlink" href="#polarcodes.Math.Math.phi_inv" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="polarcodes.Math.Math.phi_residual">
+<code class="sig-name descname">phi_residual</code><span class="sig-paren">(</span><em class="sig-param">x</em>, <em class="sig-param">val</em><span class="sig-paren">)</span><a class="headerlink" href="#polarcodes.Math.Math.phi_residual" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="polarcodes.Math.Math.sort_by_wt">
+<code class="sig-name descname">sort_by_wt</code><span class="sig-paren">(</span><em class="sig-param">x</em>, <em class="sig-param">n</em><span class="sig-paren">)</span><a class="headerlink" href="#polarcodes.Math.Math.sort_by_wt" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sort a vector by index hamming weights using hamming_wt().</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>ndarray&lt;int&gt;</em>) – a vector of indices</p></li>
+<li><p><strong>n</strong> (<em>int</em>) – number of bits per index in <a href="#id39"><span class="problematic" id="id40">:param:`x`</span></a></p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>sorted vector</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>ndarray&lt;int&gt;</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="polarcodes.Math.Math.subtract_set">
+<code class="sig-name descname">subtract_set</code><span class="sig-paren">(</span><em class="sig-param">X</em>, <em class="sig-param">Y</em><span class="sig-paren">)</span><a class="headerlink" href="#polarcodes.Math.Math.subtract_set" title="Permalink to this definition">¶</a></dt>
+<dd><p>Subtraction of two sets.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X</strong> (<em>ndarray&lt;int&gt;</em>) – a vector of indices</p></li>
+<li><p><strong>Y</strong> (<em>ndarray&lt;int&gt;</em>) – a vector of indices</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>result of subtracted set as a vector</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>ndarray&lt;int&gt;</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-polarcodes.PolarCode">
+<span id="polarcodes-polarcode-module"></span><h2>polarcodes.PolarCode module<a class="headerlink" href="#module-polarcodes.PolarCode" title="Permalink to this headline">¶</a></h2>
+<p>PolarCode class</p>
+<dl class="class">
+<dt id="polarcodes.PolarCode.PolarCode">
+<em class="property">class </em><code class="sig-prename descclassname">polarcodes.PolarCode.</code><code class="sig-name descname">PolarCode</code><span class="sig-paren">(</span><em class="sig-param">M</em>, <em class="sig-param">K</em>, <em class="sig-param">punct_params=(''</em>, <em class="sig-param">''</em>, <span class="optional">[</span><span class="optional">]</span><span class="optional">[</span><span class="optional">]</span><span class="optional">[</span><span class="optional">]</span><em class="sig-param">)</em><span class="sig-paren">)</span><a class="headerlink" href="#polarcodes.PolarCode.PolarCode" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#polarcodes.Math.Math" title="polarcodes.Math.Math"><code class="xref py py-class docutils literal notranslate"><span class="pre">polarcodes.Math.Math</span></code></a></p>
+<dl class="method">
+<dt id="polarcodes.PolarCode.PolarCode.get_lut">
+<code class="sig-name descname">get_lut</code><span class="sig-paren">(</span><em class="sig-param">my_set</em><span class="sig-paren">)</span><a class="headerlink" href="#polarcodes.PolarCode.PolarCode.get_lut" title="Permalink to this definition">¶</a></dt>
+<dd><p>Covert a set into a lookup table.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>my_set</strong> (<em>ndarray&lt;int&gt;</em>) – a vector of indices</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>lookup table. “0” for an index in <a href="#id41"><span class="problematic" id="id42">:param:`my_set`</span></a>, else “1”</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>ndarray&lt;int&gt;</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="polarcodes.PolarCode.PolarCode.get_normalised_SNR">
+<code class="sig-name descname">get_normalised_SNR</code><span class="sig-paren">(</span><em class="sig-param">design_SNR</em><span class="sig-paren">)</span><a class="headerlink" href="#polarcodes.PolarCode.PolarCode.get_normalised_SNR" title="Permalink to this definition">¶</a></dt>
+<dd><p>Normalise E_b/N_o so that the message bits have the same energy for any code rate.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>design_SNR</strong> (<em>float</em>) – E_b/N_o in decibels</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>normalised E_b/N_o in linear units</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="polarcodes.PolarCode.PolarCode.gui_plot_handler">
+<code class="sig-name descname">gui_plot_handler</code><span class="sig-paren">(</span><em class="sig-param">gui_dict</em>, <em class="sig-param">fig</em><span class="sig-paren">)</span><a class="headerlink" href="#polarcodes.PolarCode.PolarCode.gui_plot_handler" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="polarcodes.PolarCode.PolarCode.gui_sim_handler">
+<code class="sig-name descname">gui_sim_handler</code><span class="sig-paren">(</span><em class="sig-param">gui_dict</em><span class="sig-paren">)</span><a class="headerlink" href="#polarcodes.PolarCode.PolarCode.gui_sim_handler" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="polarcodes.PolarCode.PolarCode.initialise_code">
+<code class="sig-name descname">initialise_code</code><span class="sig-paren">(</span><em class="sig-param">M</em>, <em class="sig-param">K</em>, <em class="sig-param">punct_params</em><span class="sig-paren">)</span><a class="headerlink" href="#polarcodes.PolarCode.PolarCode.initialise_code" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialise the code with a set of parameters the same way as the constructor.
+Call this any time you want to change the code rate.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="polarcodes.PolarCode.PolarCode.plot">
+<code class="sig-name descname">plot</code><span class="sig-paren">(</span><em class="sig-param">sim_filenames</em>, <em class="sig-param">dir</em><span class="sig-paren">)</span><a class="headerlink" href="#polarcodes.PolarCode.PolarCode.plot" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plot multiple sets of FER data from the same directory on the same axes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>sim_filenames</strong> (<em>ndarray&lt;string&gt;</em>) – a list of all filenames to plot in a common root directory</p></li>
+<li><p><strong>dir</strong> (<em>string</em>) – the root directory for the specified filenames</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="polarcodes.PolarCode.PolarCode.plot_helper">
+<code class="sig-name descname">plot_helper</code><span class="sig-paren">(</span><em class="sig-param">new_plot</em>, <em class="sig-param">sim_filenames</em>, <em class="sig-param">dir</em>, <em class="sig-param">plot_title='Polar Code Performance'</em><span class="sig-paren">)</span><a class="headerlink" href="#polarcodes.PolarCode.PolarCode.plot_helper" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="polarcodes.PolarCode.PolarCode.run_simulation">
+<code class="sig-name descname">run_simulation</code><span class="sig-paren">(</span><em class="sig-param">Eb_No</em>, <em class="sig-param">max_iter</em>, <em class="sig-param">min_errors</em>, <em class="sig-param">min_iters</em><span class="sig-paren">)</span><a class="headerlink" href="#polarcodes.PolarCode.PolarCode.run_simulation" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="polarcodes.PolarCode.PolarCode.save_as_json">
+<code class="sig-name descname">save_as_json</code><span class="sig-paren">(</span><em class="sig-param">sim_filename</em><span class="sig-paren">)</span><a class="headerlink" href="#polarcodes.PolarCode.PolarCode.save_as_json" title="Permalink to this definition">¶</a></dt>
+<dd><p>Save all the important parameters in this object as a JSON file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>sim_filename</strong> (<em>string</em>) – directory and filename to save JSON file to (excluding extension)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="polarcodes.PolarCode.PolarCode.set_message">
+<code class="sig-name descname">set_message</code><span class="sig-paren">(</span><em class="sig-param">m</em><span class="sig-paren">)</span><a class="headerlink" href="#polarcodes.PolarCode.PolarCode.set_message" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the message vector to the non-frozen bits in :param x:. The frozen bits in <a href="#id43"><span class="problematic" id="id44">:param:`frozen`</span></a> are set to zero.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>m</strong> (<em>ndarray&lt;int&gt;</em>) – the message vector</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="polarcodes.PolarCode.PolarCode.simulate">
+<code class="sig-name descname">simulate</code><span class="sig-paren">(</span><em class="sig-param">save_to</em>, <em class="sig-param">Eb_No_vec</em>, <em class="sig-param">design_SNR=None</em>, <em class="sig-param">max_iter=100000</em>, <em class="sig-param">min_iterations=1000</em>, <em class="sig-param">min_errors=30</em>, <em class="sig-param">sim_seed=1729</em>, <em class="sig-param">manual_const_flag=True</em><span class="sig-paren">)</span><a class="headerlink" href="#polarcodes.PolarCode.PolarCode.simulate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Monte-carlo simulation of the performance of this polar code.
+The simulation has an early stopping condition of when the number of errors is below min_errors.
+Each E_b/N_o simulation has an additional early stopping condition using the minimum iterations
+and the minimum number of errors. The results are saved in a JSON file using <a class="reference internal" href="#polarcodes.PolarCode.PolarCode.save_as_json" title="polarcodes.PolarCode.PolarCode.save_as_json"><code class="xref py py-func docutils literal notranslate"><span class="pre">save_as_json()</span></code></a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>save_to</strong> (<em>string</em>) – directory and filename to save JSON file to (excluding extension)</p></li>
+<li><p><strong>Eb_No_vec</strong> (<em>ndarray&lt;float&gt;</em>) – the range of SNR values to simulate</p></li>
+<li><p><strong>design_SNR</strong> (<em>float</em>) – the construction design SNR, E_b/N_o</p></li>
+<li><p><strong>max_iter</strong> (<em>int</em>) – maximum number of iterations per SNR</p></li>
+<li><p><strong>min_iterations</strong> (<em>int</em>) – the minimum number of iterations before early stopping is allowed per SNR</p></li>
+<li><p><strong>min_errors</strong> (<em>int</em>) – the minimum number of frame errors before early stopping is allowed per SNR</p></li>
+<li><p><strong>sim_seed</strong> (<em>int</em>) – </p></li>
+<li><p><strong>manual_const_flag</strong> (<em>bool</em>) – a flag that decides if construction should be done before simulating.
+Set to False if mothercode and/or puncturing constructions are manually set by the user.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-polarcodes.Puncture">
+<span id="polarcodes-puncture-module"></span><h2>polarcodes.Puncture module<a class="headerlink" href="#module-polarcodes.Puncture" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="polarcodes.Puncture.Puncture">
+<em class="property">class </em><code class="sig-prename descclassname">polarcodes.Puncture.</code><code class="sig-name descname">Puncture</code><span class="sig-paren">(</span><em class="sig-param">myPC</em>, <em class="sig-param">design_SNR</em>, <em class="sig-param">manual=False</em><span class="sig-paren">)</span><a class="headerlink" href="#polarcodes.Puncture.Puncture" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#polarcodes.Construct.Construct" title="polarcodes.Construct.Construct"><code class="xref py py-class docutils literal notranslate"><span class="pre">polarcodes.Construct.Construct</span></code></a></p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-polarcodes.Shorten">
+<span id="polarcodes-shorten-module"></span><h2>polarcodes.Shorten module<a class="headerlink" href="#module-polarcodes.Shorten" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="polarcodes.Shorten.Shorten">
+<em class="property">class </em><code class="sig-prename descclassname">polarcodes.Shorten.</code><code class="sig-name descname">Shorten</code><span class="sig-paren">(</span><em class="sig-param">myPC</em>, <em class="sig-param">design_SNR</em>, <em class="sig-param">manual=False</em><span class="sig-paren">)</span><a class="headerlink" href="#polarcodes.Shorten.Shorten" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#polarcodes.Construct.Construct" title="polarcodes.Construct.Construct"><code class="xref py py-class docutils literal notranslate"><span class="pre">polarcodes.Construct.Construct</span></code></a></p>
+<dl class="method">
+<dt id="polarcodes.Shorten.Shorten.bgl_pattern">
+<code class="sig-name descname">bgl_pattern</code><span class="sig-paren">(</span><em class="sig-param">myPC</em><span class="sig-paren">)</span><a class="headerlink" href="#polarcodes.Shorten.Shorten.bgl_pattern" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bioglio-Gabry-Land (BGL) Shortening
+Reference: Bioglio, V., Gabry, F., &amp; Land, I. (2017). Low-Complexity Puncturing and Shortening of Polar Codes. arXiv.org.
+Retrieved from <a class="reference external" href="http://search.proquest.com/docview/2075581442/">http://search.proquest.com/docview/2075581442/</a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>myPC</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">PolarCode</span></code> class) – a polar code object created using the <code class="xref py py-class docutils literal notranslate"><span class="pre">PolarCode</span></code> class</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the BGL shortening set</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>ndarray&lt;int&gt;</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="polarcodes.Shorten.Shorten.brs_pattern">
+<code class="sig-name descname">brs_pattern</code><span class="sig-paren">(</span><em class="sig-param">myPC</em><span class="sig-paren">)</span><a class="headerlink" href="#polarcodes.Shorten.Shorten.brs_pattern" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bit-Reversal Shortening (BRS). A known high-performing shortening set, often called RQUP.
+Reference: Niu, Dai, Chen, Lin, Zhang, &amp; Vasilakos. (2017). Rate-Compatible Punctured Polar Codes: Optimal Construction Based on Polar Spectra. arXiv.org.
+Retrieved from <a class="reference external" href="http://search.proquest.com/docview/2076458581/">http://search.proquest.com/docview/2076458581/</a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>myPC</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">PolarCode</span></code> class) – a polar code object created using the <code class="xref py py-class docutils literal notranslate"><span class="pre">PolarCode</span></code> class</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>BRS shortening set</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>ndarray&lt;int&gt;</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="polarcodes.Shorten.Shorten.frozen_from_pattern">
+<code class="sig-name descname">frozen_from_pattern</code><span class="sig-paren">(</span><em class="sig-param">myPC</em><span class="sig-paren">)</span><a class="headerlink" href="#polarcodes.Shorten.Shorten.frozen_from_pattern" title="Permalink to this definition">¶</a></dt>
+<dd><p>Forces the frozen bits to include the corresponding puncturing source bits in <a href="#id45"><span class="problematic" id="id46">:param:`source_set`</span></a> in <a href="#id47"><span class="problematic" id="id48">:param:`myPC`</span></a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>myPC</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">PolarCode</span></code> class) – a polar code object created using the <code class="xref py py-class docutils literal notranslate"><span class="pre">PolarCode</span></code> class</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the new frozen set, that is typically assigned to <a href="#id49"><span class="problematic" id="id50">:param:`frozen`</span></a> in <a href="#id51"><span class="problematic" id="id52">:param:`myPC`</span></a>.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>ndarray&lt;int&gt;</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="polarcodes.Shorten.Shorten.perm">
+<code class="sig-name descname">perm</code><span class="sig-paren">(</span><em class="sig-param">myPC</em><span class="sig-paren">)</span><a class="headerlink" href="#polarcodes.Shorten.Shorten.perm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bit-wise permutation of the indices of the WLS pattern. This has been shown to produce other reciprocal
+shortening patterns, and so it is useful in enumerating them all for analysis.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>myPC</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">PolarCode</span></code> class) – a polar code object created using the <code class="xref py py-class docutils literal notranslate"><span class="pre">PolarCode</span></code> class</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the permuted shortening pattern for <a href="#id53"><span class="problematic" id="id54">:param:`myPC`</span></a></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>ndarray&lt;int&gt;</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="polarcodes.Shorten.Shorten.shortened_pcc">
+<code class="sig-name descname">shortened_pcc</code><span class="sig-paren">(</span><em class="sig-param">myPC</em>, <em class="sig-param">design_SNR</em><span class="sig-paren">)</span><a class="headerlink" href="#polarcodes.Shorten.Shorten.shortened_pcc" title="Permalink to this definition">¶</a></dt>
+<dd><p>Find the shortened polar code construction and update <a href="#id55"><span class="problematic" id="id56">:param:`frozen`</span></a> in <a href="#id57"><span class="problematic" id="id58">:param:`myPC`</span></a>.
+This is not strictly necessary, since many shortening patterns work just fine with the mothercode reliabilities.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>myPC</strong> – a polar code object created using the <code class="xref py py-class docutils literal notranslate"><span class="pre">PolarCode</span></code> class</p></li>
+<li><p><strong>design_SNR</strong> – the design SNR in decibels</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="polarcodes.Shorten.Shorten.update_spcc">
+<code class="sig-name descname">update_spcc</code><span class="sig-paren">(</span><em class="sig-param">myPC</em>, <em class="sig-param">design_SNR</em><span class="sig-paren">)</span><a class="headerlink" href="#polarcodes.Shorten.Shorten.update_spcc" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="polarcodes.Shorten.Shorten.wang_liu">
+<code class="sig-name descname">wang_liu</code><span class="sig-paren">(</span><em class="sig-param">myPC</em><span class="sig-paren">)</span><a class="headerlink" href="#polarcodes.Shorten.Shorten.wang_liu" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="polarcodes.Shorten.Shorten.wls_pattern">
+<code class="sig-name descname">wls_pattern</code><span class="sig-paren">(</span><em class="sig-param">myPC</em><span class="sig-paren">)</span><a class="headerlink" href="#polarcodes.Shorten.Shorten.wls_pattern" title="Permalink to this definition">¶</a></dt>
+<dd><p>Wang-Liu Shortening (WLS). The common pattern from the Wang-Liu algorithm.
+Reference: Runxin Wang, &amp; Rongke Liu. (2014). A Novel Puncturing Scheme for Polar Codes. IEEE Communications Letters, 18(12), 2081–2084.
+<a class="reference external" href="https://doi.org/10.1109/LCOMM.2014.2364845">https://doi.org/10.1109/LCOMM.2014.2364845</a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>myPC</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">PolarCode</span></code> class) – a polar code object created using the <code class="xref py py-class docutils literal notranslate"><span class="pre">PolarCode</span></code> class</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>WLS shortening set</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>ndarray&lt;int&gt;</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-polarcodes">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-polarcodes" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="polar-codes-in-python">
+<h3>Polar Codes in Python<a class="headerlink" href="#polar-codes-in-python" title="Permalink to this headline">¶</a></h3>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Brendon McBain
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
