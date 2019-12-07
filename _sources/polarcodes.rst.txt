@@ -1,8 +1,6 @@
 polarcodes package
 ==================
 
-Submodules
-----------
 
 polarcodes.AWGN module
 ----------------------
@@ -72,15 +70,6 @@ polarcodes.Shorten module
 -------------------------
 
 .. automodule:: polarcodes.Shorten
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
-
-Module contents
----------------
-
-.. automodule:: polarcodes
    :members:
    :undoc-members:
    :show-inheritance:

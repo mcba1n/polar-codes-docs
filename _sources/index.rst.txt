@@ -6,9 +6,7 @@
 Polar Codes in Python documentation
 =================================================
 
-.. automodule:: polarcodes.PolarCode.PolarCode
-   :members:
-
+Download the library using the pip command ``pip install py-polar-codes``.
 
 .. toctree::
    :maxdepth: 2

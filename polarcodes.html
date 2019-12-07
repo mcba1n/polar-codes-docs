@@ -81,7 +81,6 @@
               <!-- Local TOC -->
               <div class="local-toc"><ul>
 <li><a class="reference internal" href="#">polarcodes package</a><ul>
-<li><a class="reference internal" href="#submodules">Submodules</a></li>
 <li><a class="reference internal" href="#module-polarcodes.AWGN">polarcodes.AWGN module</a></li>
 <li><a class="reference internal" href="#module-polarcodes.Construct">polarcodes.Construct module</a></li>
 <li><a class="reference internal" href="#module-polarcodes.Decode">polarcodes.Decode module</a></li>
@@ -91,10 +90,6 @@
 <li><a class="reference internal" href="#module-polarcodes.PolarCode">polarcodes.PolarCode module</a></li>
 <li><a class="reference internal" href="#module-polarcodes.Puncture">polarcodes.Puncture module</a></li>
 <li><a class="reference internal" href="#module-polarcodes.Shorten">polarcodes.Shorten module</a></li>
-<li><a class="reference internal" href="#module-polarcodes">Module contents</a><ul>
-<li><a class="reference internal" href="#polar-codes-in-python">Polar Codes in Python</a></li>
-</ul>
-</li>
 </ul>
 </li>
 </ul>
@@ -163,11 +158,13 @@
             
   <div class="section" id="polarcodes-package">
 <h1>polarcodes package<a class="headerlink" href="#polarcodes-package" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="submodules">
-<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
-</div>
 <div class="section" id="module-polarcodes.AWGN">
 <span id="polarcodes-awgn-module"></span><h2>polarcodes.AWGN module<a class="headerlink" href="#module-polarcodes.AWGN" title="Permalink to this headline">¶</a></h2>
+<p>This class simulates an AWGN channel by adding gaussian noise with double-sided noise power.
+It updates <code class="docutils literal notranslate"><span class="pre">likelihoods</span></code> in <code class="xref py py-class docutils literal notranslate"><span class="pre">PolarCode</span></code> with randomly generated log-likelihood ratios
+for <code class="docutils literal notranslate"><span class="pre">u</span></code> in <code class="xref py py-class docutils literal notranslate"><span class="pre">PolarCode</span></code>. For puncturing, the likelihoods for the punctured bits given by
+<code class="docutils literal notranslate"><span class="pre">source_set_lookup</span></code> in <code class="xref py py-class docutils literal notranslate"><span class="pre">PolarCode</span></code> will be set to zero. For shortening,
+these likelihoods will be set to infinity. Currently only BPSK modulation is supported.</p>
 <dl class="class">
 <dt id="polarcodes.AWGN.AWGN">
 <em class="property">class </em><code class="sig-prename descclassname">polarcodes.AWGN.</code><code class="sig-name descname">AWGN</code><span class="sig-paren">(</span><em class="sig-param">myPC</em>, <em class="sig-param">Eb_No</em>, <em class="sig-param">plot_noise=False</em><span class="sig-paren">)</span><a class="headerlink" href="#polarcodes.AWGN.AWGN" title="Permalink to this definition">¶</a></dt>
@@ -182,7 +179,7 @@ LLR = Pr(y=0)/Pr(y=1).</p>
 <dd class="field-odd"><p><strong>y</strong> (<em>float</em>) – a received signal from a gaussian-distributed channel</p>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p>log-likelihood ratio for the input signal <a href="#id1"><span class="problematic" id="id2">:param:`y`</span></a></p>
+<dd class="field-even"><p>log-likelihood ratio for the input signal <code class="docutils literal notranslate"><span class="pre">y</span></code></p>
 </dd>
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p>float</p>
@@ -199,7 +196,7 @@ LLR = Pr(y=0)/Pr(y=1).</p>
 <dd class="field-odd"><p><strong>y</strong> (<em>ndarray&lt;float&gt;</em>) – an ensemble of received signals</p>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p>log-likelihood ratios for the input signals <a href="#id3"><span class="problematic" id="id4">:param:`y`</span></a></p>
+<dd class="field-even"><p>log-likelihood ratios for the input signals <code class="docutils literal notranslate"><span class="pre">y</span></code></p>
 </dd>
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p>ndarray&lt;float&gt;</p>
@@ -217,7 +214,7 @@ LLR = Pr(y=0)/Pr(y=1).</p>
 <dd class="field-odd"><p><strong>x</strong> (<em>ndarray&lt;int&gt;</em>) – an ensemble of information to send</p>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p>Modulated signal with the information from <a href="#id5"><span class="problematic" id="id6">:param:`x`</span></a></p>
+<dd class="field-even"><p>Modulated signal with the information from <code class="docutils literal notranslate"><span class="pre">x</span></code></p>
 </dd>
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p>ndarray&lt;float&gt;</p>
@@ -246,7 +243,7 @@ For a noise power N_o, the double-side noise power is N_o/2.</p>
 <dl class="method">
 <dt id="polarcodes.AWGN.AWGN.show_noise">
 <code class="sig-name descname">show_noise</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#polarcodes.AWGN.AWGN.show_noise" title="Permalink to this definition">¶</a></dt>
-<dd><p>Trigger showing the gaussian noise. Only works if <a href="#id7"><span class="problematic" id="id8">:param:`plot_noise`</span></a> is True.</p>
+<dd><p>Trigger showing the gaussian noise. Only works if <code class="docutils literal notranslate"><span class="pre">plot_noise</span></code> is True.</p>
 </dd></dl>
 
 </dd></dl>
@@ -254,6 +251,9 @@ For a noise power N_o, the double-side noise power is N_o/2.</p>
 </div>
 <div class="section" id="module-polarcodes.Construct">
 <span id="polarcodes-construct-module"></span><h2>polarcodes.Construct module<a class="headerlink" href="#module-polarcodes.Construct" title="Permalink to this headline">¶</a></h2>
+<p>Construct performs the mothercode construction.
+It uses the algorithm specified by <code class="docutils literal notranslate"><span class="pre">construction_type</span></code> in <code class="docutils literal notranslate"><span class="pre">myPC</span></code>.
+Mothercode constructions supported: Bhattacharyya Bounds, Gaussian Approximation.</p>
 <dl class="class">
 <dt id="polarcodes.Construct.Construct">
 <em class="property">class </em><code class="sig-prename descclassname">polarcodes.Construct.</code><code class="sig-name descname">Construct</code><span class="sig-paren">(</span><em class="sig-param">myPC</em>, <em class="sig-param">design_SNR</em>, <em class="sig-param">manual=False</em><span class="sig-paren">)</span><a class="headerlink" href="#polarcodes.Construct.Construct" title="Permalink to this definition">¶</a></dt>
@@ -261,12 +261,12 @@ For a noise power N_o, the double-side noise power is N_o/2.</p>
 <dl class="method">
 <dt id="polarcodes.Construct.Construct.general_ga">
 <code class="sig-name descname">general_ga</code><span class="sig-paren">(</span><em class="sig-param">myPC</em>, <em class="sig-param">z0</em><span class="sig-paren">)</span><a class="headerlink" href="#polarcodes.Construct.Construct.general_ga" title="Permalink to this definition">¶</a></dt>
-<dd><p>Polar code construction using density evolution with the Gaussian Approximation. Each channel can have different parameters.
-References:
-[1] Trifonov, P. (2012). Efficient Design and Decoding of Polar Codes. IEEE Transactions on Communications, 60(11), 3221–3227.
-<a class="reference external" href="https://doi.org/10.1109/TCOMM.2012.081512.110872">https://doi.org/10.1109/TCOMM.2012.081512.110872</a>
-[2] Vangala, H., Viterbo, E., &amp; Hong, Y. (2015). A Comparative Study of Polar Code Constructions for the AWGN Channel. arXiv.org.
-Retrieved from <a class="reference external" href="http://search.proquest.com/docview/2081709282/">http://search.proquest.com/docview/2081709282/</a></p>
+<dd><p>Polar code construction using density evolution with the Gaussian Approximation. Each channel can have different parameters.</p>
+<p><strong>References:</strong></p>
+<ul class="simple">
+<li><p>Trifonov, P. (2012). Efficient Design and Decoding of Polar Codes. IEEE Transactions on Communications, 60(11), 3221–3227. <a class="reference external" href="https://doi.org/10.1109/TCOMM.2012.081512.110872">https://doi.org/10.1109/TCOMM.2012.081512.110872</a></p></li>
+<li><p>Vangala, H., Viterbo, E., &amp; Hong, Y. (2015). A Comparative Study of Polar Code Constructions for the AWGN Channel. arXiv.org. Retrieved from <a class="reference external" href="http://search.proquest.com/docview/2081709282/">http://search.proquest.com/docview/2081709282/</a></p></li>
+</ul>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>z0</strong> (<em>ndarray&lt;float&gt;</em><em> or </em><em>float</em>) – a vector of the initial mean likelihood densities, 4 * E_b/N_o.
@@ -285,9 +285,11 @@ Note that this SNR should be normalised using <code class="xref py py-func docut
 <dt id="polarcodes.Construct.Construct.general_pcc">
 <code class="sig-name descname">general_pcc</code><span class="sig-paren">(</span><em class="sig-param">myPC</em>, <em class="sig-param">z0</em><span class="sig-paren">)</span><a class="headerlink" href="#polarcodes.Construct.Construct.general_pcc" title="Permalink to this definition">¶</a></dt>
 <dd><p>Polar code construction using Bhattacharyya Bounds. Each bit-channel can have different parameters.
-Supports shortening by adding extra cases for infinite likelihoods.
-Reference: Vangala, H., Viterbo, E., &amp; Hong, Y. (2015). A Comparative Study of Polar Code Constructions for the AWGN Channel. arXiv.org.
-Retrieved from <a class="reference external" href="http://search.proquest.com/docview/2081709282/">http://search.proquest.com/docview/2081709282/</a></p>
+Supports shortening by adding extra cases for infinite likelihoods.</p>
+<p><strong>References:</strong></p>
+<ul class="simple">
+<li><p>Vangala, H., Viterbo, E., &amp; Hong, Y. (2015). A Comparative Study of Polar Code Constructions for the AWGN Channel. arXiv.org. Retrieved from <a class="reference external" href="http://search.proquest.com/docview/2081709282/">http://search.proquest.com/docview/2081709282/</a></p></li>
+</ul>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>z0</strong> (<em>ndarray&lt;float&gt;</em><em> or </em><em>float</em>) – a vector of the initial Bhattacharyya parameters in the log-domain, -E_b/N_o.
@@ -305,9 +307,11 @@ Note that this SNR should be normalised using <code class="xref py py-func docut
 <dl class="method">
 <dt id="polarcodes.Construct.Construct.perfect_pcc">
 <code class="sig-name descname">perfect_pcc</code><span class="sig-paren">(</span><em class="sig-param">myPC</em>, <em class="sig-param">p</em><span class="sig-paren">)</span><a class="headerlink" href="#polarcodes.Construct.Construct.perfect_pcc" title="Permalink to this definition">¶</a></dt>
-<dd><p>Boolean expression approach to puncturing pattern construction.
-Reference: Song-Nam, H., &amp; Hui, D. (2018). On the Analysis of Puncturing for Finite-Length Polar Codes: Boolean Function Approach. arXiv.org.
-Retrieved from <a class="reference external" href="http://search.proquest.com/docview/2071252269/">http://search.proquest.com/docview/2071252269/</a></p>
+<dd><p>Boolean expression approach to puncturing pattern construction.</p>
+<p><strong>References:</strong></p>
+<ul class="simple">
+<li><p>Song-Nam, H., &amp; Hui, D. (2018). On the Analysis of Puncturing for Finite-Length Polar Codes: Boolean Function Approach. arXiv.org. Retrieved from <a class="reference external" href="http://search.proquest.com/docview/2071252269/">http://search.proquest.com/docview/2071252269/</a></p></li>
+</ul>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>p</strong> (<em>ndarray&lt;int&gt;</em>) – lookup table for coded puncturing bits. “0” =&gt; punctured, “1” =&gt; information.
@@ -333,6 +337,7 @@ For shortening, take the complement of this output.</p>
 </div>
 <div class="section" id="module-polarcodes.Decode">
 <span id="polarcodes-decode-module"></span><h2>polarcodes.Decode module<a class="headerlink" href="#module-polarcodes.Decode" title="Permalink to this headline">¶</a></h2>
+<p>A polar decoder class. Currently only Successive Cancellation Decoder (SCD) is supported.</p>
 <dl class="class">
 <dt id="polarcodes.Decode.Decode">
 <em class="property">class </em><code class="sig-prename descclassname">polarcodes.Decode.</code><code class="sig-name descname">Decode</code><span class="sig-paren">(</span><em class="sig-param">myPC</em>, <em class="sig-param">decoder_name='scd'</em><span class="sig-paren">)</span><a class="headerlink" href="#polarcodes.Decode.Decode" title="Permalink to this definition">¶</a></dt>
@@ -362,11 +367,13 @@ This function supports shortening by checking for infinite LLR cases.</p>
 <dl class="method">
 <dt id="polarcodes.Decode.Decode.polar_decode">
 <code class="sig-name descname">polar_decode</code><span class="sig-paren">(</span><em class="sig-param">y</em><span class="sig-paren">)</span><a class="headerlink" href="#polarcodes.Decode.Decode.polar_decode" title="Permalink to this definition">¶</a></dt>
-<dd><p>Successive Cancellation Decoder. The decoded message is set to <a href="#id9"><span class="problematic" id="id10">:param:`message_received`</span></a> in <a href="#id11"><span class="problematic" id="id12">:param:`myPC`</span></a>.
-The decoder will use the frozen set as defined by <a href="#id13"><span class="problematic" id="id14">:param:`frozen`</span></a> in <a href="#id15"><span class="problematic" id="id16">:param:`myPC`</span></a>.
-Depends on <a class="reference internal" href="#polarcodes.Decode.Decode.update_LLR_recursive" title="polarcodes.Decode.Decode.update_LLR_recursive"><code class="xref py py-func docutils literal notranslate"><span class="pre">update_LLR_recursive()</span></code></a> and <a class="reference internal" href="#polarcodes.Decode.Decode.update_bits" title="polarcodes.Decode.Decode.update_bits"><code class="xref py py-func docutils literal notranslate"><span class="pre">update_bits()</span></code></a>.
-Reference: Vangala, H., Viterbo, &amp; Yi Hong. (2014). Permuted successive cancellation decoder for polar codes.
-2014 International Symposium on Information Theory and Its Applications, 438–442. IEICE.</p>
+<dd><p>Successive Cancellation Decoder. The decoded message is set to <code class="docutils literal notranslate"><span class="pre">message_received</span></code> in <code class="docutils literal notranslate"><span class="pre">myPC</span></code>.
+The decoder will use the frozen set as defined by <code class="docutils literal notranslate"><span class="pre">frozen</span></code> in <code class="docutils literal notranslate"><span class="pre">myPC</span></code>.
+Depends on <a class="reference internal" href="#polarcodes.Decode.Decode.update_LLR_recursive" title="polarcodes.Decode.Decode.update_LLR_recursive"><code class="xref py py-func docutils literal notranslate"><span class="pre">update_LLR_recursive()</span></code></a> and <a class="reference internal" href="#polarcodes.Decode.Decode.update_bits" title="polarcodes.Decode.Decode.update_bits"><code class="xref py py-func docutils literal notranslate"><span class="pre">update_bits()</span></code></a>.</p>
+<p><strong>References:</strong></p>
+<ul class="simple">
+<li><p>Vangala, H., Viterbo, &amp; Yi Hong. (2014). Permuted successive cancellation decoder for polar codes. 2014 International Symposium on Information Theory and Its Applications, 438–442. IEICE.</p></li>
+</ul>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>y</strong> (<em>ndarray&lt;float&gt;</em>) – a vector of likelihoods at the channel output</p>
@@ -431,6 +438,7 @@ This function supports shortening by checking for infinite LLR cases.</p>
 </div>
 <div class="section" id="module-polarcodes.Encode">
 <span id="polarcodes-encode-module"></span><h2>polarcodes.Encode module<a class="headerlink" href="#module-polarcodes.Encode" title="Permalink to this headline">¶</a></h2>
+<p>A polar encoder class. Currently only non-systematic encoding is supported.</p>
 <dl class="class">
 <dt id="polarcodes.Encode.Encode">
 <em class="property">class </em><code class="sig-prename descclassname">polarcodes.Encode.</code><code class="sig-name descname">Encode</code><span class="sig-paren">(</span><em class="sig-param">myPC</em>, <em class="sig-param">encoder_name='polar_encode'</em><span class="sig-paren">)</span><a class="headerlink" href="#polarcodes.Encode.Encode" title="Permalink to this definition">¶</a></dt>
@@ -439,14 +447,14 @@ This function supports shortening by checking for infinite LLR cases.</p>
 <dt id="polarcodes.Encode.Encode.polar_encode">
 <code class="sig-name descname">polar_encode</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#polarcodes.Encode.Encode.polar_encode" title="Permalink to this definition">¶</a></dt>
 <dd><p>Encodes a message using polar coding with a non-recursive implementation.
-The message <a href="#id17"><span class="problematic" id="id18">:param:`x`</span></a> is encoded using in-place operations of output <a href="#id19"><span class="problematic" id="id20">:param:`u`</span></a> in <a href="#id21"><span class="problematic" id="id22">:param:`myPC`</span></a>.</p>
+The message <code class="docutils literal notranslate"><span class="pre">x</span></code> is encoded using in-place operations of output <code class="docutils literal notranslate"><span class="pre">u</span></code> in <code class="docutils literal notranslate"><span class="pre">myPC</span></code>.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="polarcodes.Encode.Encode.polar_encode2">
 <code class="sig-name descname">polar_encode2</code><span class="sig-paren">(</span><em class="sig-param">i1</em>, <em class="sig-param">i2</em><span class="sig-paren">)</span><a class="headerlink" href="#polarcodes.Encode.Encode.polar_encode2" title="Permalink to this definition">¶</a></dt>
 <dd><p>Encodes a message using polar coding with a recursive implementation.
-The message <a href="#id23"><span class="problematic" id="id24">:param:`x`</span></a> is encoded using in-place operations of output <a href="#id25"><span class="problematic" id="id26">:param:`u`</span></a> in <a href="#id27"><span class="problematic" id="id28">:param:`myPC`</span></a>.
+The message <code class="docutils literal notranslate"><span class="pre">x</span></code> is encoded using in-place operations of output <code class="docutils literal notranslate"><span class="pre">u</span></code> in <code class="docutils literal notranslate"><span class="pre">myPC</span></code>.
 The initial call of <a class="reference internal" href="#polarcodes.Encode.Encode.polar_encode2" title="polarcodes.Encode.Encode.polar_encode2"><code class="xref py py-func docutils literal notranslate"><span class="pre">polar_encode2()</span></code></a> should set (i1, i2) = (0, N-1) for a block length N.
 For example, the second partition indices will be (0, N/2-1) and (N/2, N-1).</p>
 <dl class="field-list simple">
@@ -524,22 +532,13 @@ algorithm implementations.</p>
 <dl class="method">
 <dt id="polarcodes.Math.Math.bit_perm">
 <code class="sig-name descname">bit_perm</code><span class="sig-paren">(</span><em class="sig-param">x</em>, <em class="sig-param">p</em>, <em class="sig-param">n</em><span class="sig-paren">)</span><a class="headerlink" href="#polarcodes.Math.Math.bit_perm" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="simple">
-<dt>Description:</dt><dd><p>Find the permutation of an index.</p>
-</dd>
-<dt>Arguments:</dt><dd><p>x – an index.
-p – permutation vector, ex: bit-reversal is (0,1,…,n-1)
-n – number of bits in x.</p>
-</dd>
-<dt>Returns:</dt><dd><p>The permuted index.</p>
-</dd>
-</dl>
+<dd><p>Find the permutation of an index.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>x</strong> (<em>ndarray&lt;int&gt;</em><em> or </em><em>int</em>) – a vector of indices</p></li>
 <li><p><strong>p</strong> (<em>ndarray&lt;int&gt;</em>) – permutation vector, ex: bit-reversal is (0,1,…,n-1)</p></li>
-<li><p><strong>n</strong> (<em>int</em>) – number of bits per index in <a href="#id29"><span class="problematic" id="id30">:param:`x`</span></a></p></li>
+<li><p><strong>n</strong> (<em>int</em>) – number of bits per index in <code class="docutils literal notranslate"><span class="pre">x</span></code></p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -559,7 +558,7 @@ n – number of bits in x.</p>
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>x</strong> (<em>ndarray&lt;int&gt;</em><em> or </em><em>int</em>) – a vector of indices</p></li>
-<li><p><strong>n</strong> (<em>int</em>) – number of bits per index in <a href="#id31"><span class="problematic" id="id32">:param:`x`</span></a></p></li>
+<li><p><strong>n</strong> (<em>int</em>) – number of bits per index in <code class="docutils literal notranslate"><span class="pre">x</span></code></p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -579,11 +578,11 @@ n – number of bits in x.</p>
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>x</strong> (<em>int</em>) – an index</p></li>
-<li><p><strong>n</strong> (<em>int</em>) – number of bits in <a href="#id33"><span class="problematic" id="id34">:param:`x`</span></a></p></li>
+<li><p><strong>n</strong> (<em>int</em>) – number of bits in <code class="docutils literal notranslate"><span class="pre">x</span></code></p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p>bit-wise hamming weight of <a href="#id35"><span class="problematic" id="id36">:param:`x`</span></a></p>
+<dd class="field-even"><p>bit-wise hamming weight of <code class="docutils literal notranslate"><span class="pre">x</span></code></p>
 </dd>
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p>int</p>
@@ -594,7 +593,7 @@ n – number of bits in x.</p>
 <dl class="method">
 <dt id="polarcodes.Math.Math.inverse_set">
 <code class="sig-name descname">inverse_set</code><span class="sig-paren">(</span><em class="sig-param">F</em>, <em class="sig-param">N</em><span class="sig-paren">)</span><a class="headerlink" href="#polarcodes.Math.Math.inverse_set" title="Permalink to this definition">¶</a></dt>
-<dd><p>Find {0,1,…,N-1}F. This is useful for finding the information set given a frozen set as <a href="#id37"><span class="problematic" id="id38">:param:`F`</span></a>.</p>
+<dd><p>Find {0,1,…,N-1}F. This is useful for finding the information set given a frozen set as <code class="docutils literal notranslate"><span class="pre">F</span></code>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -679,7 +678,7 @@ n – number of bits in x.</p>
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>x</strong> (<em>ndarray&lt;int&gt;</em>) – a vector of indices</p></li>
-<li><p><strong>n</strong> (<em>int</em>) – number of bits per index in <a href="#id39"><span class="problematic" id="id40">:param:`x`</span></a></p></li>
+<li><p><strong>n</strong> (<em>int</em>) – number of bits per index in <code class="docutils literal notranslate"><span class="pre">x</span></code></p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -716,21 +715,52 @@ n – number of bits in x.</p>
 </div>
 <div class="section" id="module-polarcodes.PolarCode">
 <span id="polarcodes-polarcode-module"></span><h2>polarcodes.PolarCode module<a class="headerlink" href="#module-polarcodes.PolarCode" title="Permalink to this headline">¶</a></h2>
-<p>PolarCode class</p>
+<p>An object that encapsulates all of the parameters required to define a polar code.
+This object must be given to the following classes: <code class="xref py py-class docutils literal notranslate"><span class="pre">AWGN</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">Construct</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">Decode</span></code>,
+<code class="xref py py-class docutils literal notranslate"><span class="pre">Encode</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">GUI</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">Shorten</span></code>.</p>
 <dl class="class">
 <dt id="polarcodes.PolarCode.PolarCode">
 <em class="property">class </em><code class="sig-prename descclassname">polarcodes.PolarCode.</code><code class="sig-name descname">PolarCode</code><span class="sig-paren">(</span><em class="sig-param">M</em>, <em class="sig-param">K</em>, <em class="sig-param">punct_params=(''</em>, <em class="sig-param">''</em>, <span class="optional">[</span><span class="optional">]</span><span class="optional">[</span><span class="optional">]</span><span class="optional">[</span><span class="optional">]</span><em class="sig-param">)</em><span class="sig-paren">)</span><a class="headerlink" href="#polarcodes.PolarCode.PolarCode" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#polarcodes.Math.Math" title="polarcodes.Math.Math"><code class="xref py py-class docutils literal notranslate"><span class="pre">polarcodes.Math.Math</span></code></a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Variables</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>N</strong> – the mothercode block length</p></li>
+<li><p><strong>M</strong> – the block length (after puncturing)</p></li>
+<li><p><strong>K</strong> – the code dimension</p></li>
+<li><p><strong>n</strong> – number of bits per index</p></li>
+<li><p><strong>s</strong> – number of shortened bit-channels</p></li>
+<li><p><strong>reliabilities</strong> – reliability vector (least reliable to most reliable)</p></li>
+<li><p><strong>frozen</strong> – the frozen bit indices</p></li>
+<li><p><strong>frozen_lookup</strong> – lookup table for the frozen bits</p></li>
+<li><p><strong>x</strong> – the uncoded message with frozen bits</p></li>
+<li><p><strong>construction_type</strong> – the mothercode construction type</p></li>
+<li><p><strong>message_received</strong> – the decoded message received from a channel</p></li>
+<li><p><strong>punct_flag</strong> – whether or not the code is punctured</p></li>
+<li><p><strong>simulated_snr</strong> – the SNR values simulated</p></li>
+<li><p><strong>simulated_fer</strong> – the FER values for the SNR values in <code class="docutils literal notranslate"><span class="pre">simulated_snr</span></code> using <a class="reference internal" href="#polarcodes.PolarCode.PolarCode.simulate" title="polarcodes.PolarCode.PolarCode.simulate"><code class="xref py py-func docutils literal notranslate"><span class="pre">simulate()</span></code></a></p></li>
+<li><p><strong>simulated_ber</strong> – the BER values for the SNR values in <code class="docutils literal notranslate"><span class="pre">simulated_snr</span></code> using <a class="reference internal" href="#polarcodes.PolarCode.PolarCode.simulate" title="polarcodes.PolarCode.PolarCode.simulate"><code class="xref py py-func docutils literal notranslate"><span class="pre">simulate()</span></code></a></p></li>
+<li><p><strong>punct_type</strong> – ‘punct’ for puncturing, and ‘shorten’ for shortening</p></li>
+<li><p><strong>punct_set</strong> – the coded punctured indices</p></li>
+<li><p><strong>punct_set_lookup</strong> – lookup table for <code class="docutils literal notranslate"><span class="pre">punct_set</span></code></p></li>
+<li><p><strong>source_set</strong> – the uncoded punctured indices</p></li>
+<li><p><strong>source_set_lookup</strong> – lookup table for <code class="docutils literal notranslate"><span class="pre">source_set</span></code></p></li>
+<li><p><strong>punct_algorithm</strong> – the name of a puncturing algorithm. Options: {‘brs’, ‘wls’, ‘bgl’, ‘perm’}</p></li>
+<li><p><strong>update_frozen_flag</strong> – whether or not to update the frozen indices after puncturing</p></li>
+<li><p><strong>recip_flag</strong> – True if <code class="docutils literal notranslate"><span class="pre">punct_set</span></code> equals <code class="docutils literal notranslate"><span class="pre">source_set</span></code></p></li>
+</ul>
+</dd>
+</dl>
 <dl class="method">
 <dt id="polarcodes.PolarCode.PolarCode.get_lut">
 <code class="sig-name descname">get_lut</code><span class="sig-paren">(</span><em class="sig-param">my_set</em><span class="sig-paren">)</span><a class="headerlink" href="#polarcodes.PolarCode.PolarCode.get_lut" title="Permalink to this definition">¶</a></dt>
-<dd><p>Covert a set into a lookup table.</p>
+<dd><p>Convert a set into a lookup table.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>my_set</strong> (<em>ndarray&lt;int&gt;</em>) – a vector of indices</p>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p>lookup table. “0” for an index in <a href="#id41"><span class="problematic" id="id42">:param:`my_set`</span></a>, else “1”</p>
+<dd class="field-even"><p>lookup table. “0” for an index in <code class="docutils literal notranslate"><span class="pre">my_set</span></code>, else “1”</p>
 </dd>
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p>ndarray&lt;int&gt;</p>
@@ -810,7 +840,7 @@ Call this any time you want to change the code rate.</p>
 <dl class="method">
 <dt id="polarcodes.PolarCode.PolarCode.set_message">
 <code class="sig-name descname">set_message</code><span class="sig-paren">(</span><em class="sig-param">m</em><span class="sig-paren">)</span><a class="headerlink" href="#polarcodes.PolarCode.PolarCode.set_message" title="Permalink to this definition">¶</a></dt>
-<dd><p>Set the message vector to the non-frozen bits in :param x:. The frozen bits in <a href="#id43"><span class="problematic" id="id44">:param:`frozen`</span></a> are set to zero.</p>
+<dd><p>Set the message vector to the non-frozen bits in <code class="docutils literal notranslate"><span class="pre">x</span></code>. The frozen bits in <code class="docutils literal notranslate"><span class="pre">frozen</span></code> are set to zero.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>m</strong> (<em>ndarray&lt;int&gt;</em>) – the message vector</p>
@@ -834,7 +864,7 @@ and the minimum number of errors. The results are saved in a JSON file using <a 
 <li><p><strong>max_iter</strong> (<em>int</em>) – maximum number of iterations per SNR</p></li>
 <li><p><strong>min_iterations</strong> (<em>int</em>) – the minimum number of iterations before early stopping is allowed per SNR</p></li>
 <li><p><strong>min_errors</strong> (<em>int</em>) – the minimum number of frame errors before early stopping is allowed per SNR</p></li>
-<li><p><strong>sim_seed</strong> (<em>int</em>) – </p></li>
+<li><p><strong>sim_seed</strong> (<em>int</em>) – pseudo-random generator seed, default is 1729 (‘twister’ on MATLAB)</p></li>
 <li><p><strong>manual_const_flag</strong> (<em>bool</em>) – a flag that decides if construction should be done before simulating.
 Set to False if mothercode and/or puncturing constructions are manually set by the user.</p></li>
 </ul>
@@ -856,6 +886,8 @@ Set to False if mothercode and/or puncturing constructions are manually set by t
 </div>
 <div class="section" id="module-polarcodes.Shorten">
 <span id="polarcodes-shorten-module"></span><h2>polarcodes.Shorten module<a class="headerlink" href="#module-polarcodes.Shorten" title="Permalink to this headline">¶</a></h2>
+<p>A class dedicated to shortening. This means that the likelihoods for each coded shortened bit are set to infinity at the channel output given by class AWGN.
+Shortening techniques supported: Wang-Liu Shortening (WLS), Bit-Reversal Shortening (BRS), Bioglio-Gabry-Land Shortening (BGL), and Permuted WLS (PWLS).</p>
 <dl class="class">
 <dt id="polarcodes.Shorten.Shorten">
 <em class="property">class </em><code class="sig-prename descclassname">polarcodes.Shorten.</code><code class="sig-name descname">Shorten</code><span class="sig-paren">(</span><em class="sig-param">myPC</em>, <em class="sig-param">design_SNR</em>, <em class="sig-param">manual=False</em><span class="sig-paren">)</span><a class="headerlink" href="#polarcodes.Shorten.Shorten" title="Permalink to this definition">¶</a></dt>
@@ -863,9 +895,11 @@ Set to False if mothercode and/or puncturing constructions are manually set by t
 <dl class="method">
 <dt id="polarcodes.Shorten.Shorten.bgl_pattern">
 <code class="sig-name descname">bgl_pattern</code><span class="sig-paren">(</span><em class="sig-param">myPC</em><span class="sig-paren">)</span><a class="headerlink" href="#polarcodes.Shorten.Shorten.bgl_pattern" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bioglio-Gabry-Land (BGL) Shortening
-Reference: Bioglio, V., Gabry, F., &amp; Land, I. (2017). Low-Complexity Puncturing and Shortening of Polar Codes. arXiv.org.
-Retrieved from <a class="reference external" href="http://search.proquest.com/docview/2075581442/">http://search.proquest.com/docview/2075581442/</a></p>
+<dd><p>Bioglio-Gabry-Land (BGL) Shortening</p>
+<p><strong>References:</strong></p>
+<ul class="simple">
+<li><p>Bioglio, V., Gabry, F., &amp; Land, I. (2017). Low-Complexity Puncturing and Shortening of Polar Codes. arXiv.org. Retrieved from <a class="reference external" href="http://search.proquest.com/docview/2075581442/">http://search.proquest.com/docview/2075581442/</a></p></li>
+</ul>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>myPC</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">PolarCode</span></code> class) – a polar code object created using the <code class="xref py py-class docutils literal notranslate"><span class="pre">PolarCode</span></code> class</p>
@@ -882,9 +916,11 @@ Retrieved from <a class="reference external" href="http://search.proquest.com/do
 <dl class="method">
 <dt id="polarcodes.Shorten.Shorten.brs_pattern">
 <code class="sig-name descname">brs_pattern</code><span class="sig-paren">(</span><em class="sig-param">myPC</em><span class="sig-paren">)</span><a class="headerlink" href="#polarcodes.Shorten.Shorten.brs_pattern" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bit-Reversal Shortening (BRS). A known high-performing shortening set, often called RQUP.
-Reference: Niu, Dai, Chen, Lin, Zhang, &amp; Vasilakos. (2017). Rate-Compatible Punctured Polar Codes: Optimal Construction Based on Polar Spectra. arXiv.org.
-Retrieved from <a class="reference external" href="http://search.proquest.com/docview/2076458581/">http://search.proquest.com/docview/2076458581/</a></p>
+<dd><p>Bit-Reversal Shortening (BRS). A known high-performing shortening set, often called RQUP.</p>
+<p><strong>References:</strong></p>
+<ul class="simple">
+<li><p>Niu, Dai, Chen, Lin, Zhang, &amp; Vasilakos. (2017). Rate-Compatible Punctured Polar Codes: Optimal Construction Based on Polar Spectra. arXiv.org. Retrieved from <a class="reference external" href="http://search.proquest.com/docview/2076458581/">http://search.proquest.com/docview/2076458581/</a></p></li>
+</ul>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>myPC</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">PolarCode</span></code> class) – a polar code object created using the <code class="xref py py-class docutils literal notranslate"><span class="pre">PolarCode</span></code> class</p>
@@ -901,13 +937,13 @@ Retrieved from <a class="reference external" href="http://search.proquest.com/do
 <dl class="method">
 <dt id="polarcodes.Shorten.Shorten.frozen_from_pattern">
 <code class="sig-name descname">frozen_from_pattern</code><span class="sig-paren">(</span><em class="sig-param">myPC</em><span class="sig-paren">)</span><a class="headerlink" href="#polarcodes.Shorten.Shorten.frozen_from_pattern" title="Permalink to this definition">¶</a></dt>
-<dd><p>Forces the frozen bits to include the corresponding puncturing source bits in <a href="#id45"><span class="problematic" id="id46">:param:`source_set`</span></a> in <a href="#id47"><span class="problematic" id="id48">:param:`myPC`</span></a>.</p>
+<dd><p>Forces the frozen bits to include the corresponding puncturing source bits in <code class="docutils literal notranslate"><span class="pre">source_set</span></code> in <code class="docutils literal notranslate"><span class="pre">myPC</span></code>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>myPC</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">PolarCode</span></code> class) – a polar code object created using the <code class="xref py py-class docutils literal notranslate"><span class="pre">PolarCode</span></code> class</p>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p>the new frozen set, that is typically assigned to <a href="#id49"><span class="problematic" id="id50">:param:`frozen`</span></a> in <a href="#id51"><span class="problematic" id="id52">:param:`myPC`</span></a>.</p>
+<dd class="field-even"><p>the new frozen set, that is typically assigned to <code class="docutils literal notranslate"><span class="pre">frozen</span></code> in <code class="docutils literal notranslate"><span class="pre">myPC</span></code>.</p>
 </dd>
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p>ndarray&lt;int&gt;</p>
@@ -925,7 +961,7 @@ shortening patterns, and so it is useful in enumerating them all for analysis.</
 <dd class="field-odd"><p><strong>myPC</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">PolarCode</span></code> class) – a polar code object created using the <code class="xref py py-class docutils literal notranslate"><span class="pre">PolarCode</span></code> class</p>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p>the permuted shortening pattern for <a href="#id53"><span class="problematic" id="id54">:param:`myPC`</span></a></p>
+<dd class="field-even"><p>the permuted shortening pattern for <code class="docutils literal notranslate"><span class="pre">myPC</span></code></p>
 </dd>
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p>ndarray&lt;int&gt;</p>
@@ -936,7 +972,7 @@ shortening patterns, and so it is useful in enumerating them all for analysis.</
 <dl class="method">
 <dt id="polarcodes.Shorten.Shorten.shortened_pcc">
 <code class="sig-name descname">shortened_pcc</code><span class="sig-paren">(</span><em class="sig-param">myPC</em>, <em class="sig-param">design_SNR</em><span class="sig-paren">)</span><a class="headerlink" href="#polarcodes.Shorten.Shorten.shortened_pcc" title="Permalink to this definition">¶</a></dt>
-<dd><p>Find the shortened polar code construction and update <a href="#id55"><span class="problematic" id="id56">:param:`frozen`</span></a> in <a href="#id57"><span class="problematic" id="id58">:param:`myPC`</span></a>.
+<dd><p>Find the shortened polar code construction and update <code class="docutils literal notranslate"><span class="pre">frozen</span></code> in <code class="docutils literal notranslate"><span class="pre">myPC</span></code>.
 This is not strictly necessary, since many shortening patterns work just fine with the mothercode reliabilities.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -961,9 +997,11 @@ This is not strictly necessary, since many shortening patterns work just fine wi
 <dl class="method">
 <dt id="polarcodes.Shorten.Shorten.wls_pattern">
 <code class="sig-name descname">wls_pattern</code><span class="sig-paren">(</span><em class="sig-param">myPC</em><span class="sig-paren">)</span><a class="headerlink" href="#polarcodes.Shorten.Shorten.wls_pattern" title="Permalink to this definition">¶</a></dt>
-<dd><p>Wang-Liu Shortening (WLS). The common pattern from the Wang-Liu algorithm.
-Reference: Runxin Wang, &amp; Rongke Liu. (2014). A Novel Puncturing Scheme for Polar Codes. IEEE Communications Letters, 18(12), 2081–2084.
-<a class="reference external" href="https://doi.org/10.1109/LCOMM.2014.2364845">https://doi.org/10.1109/LCOMM.2014.2364845</a></p>
+<dd><p>Wang-Liu Shortening (WLS). The common pattern from the Wang-Liu algorithm.</p>
+<p><strong>References:</strong></p>
+<ul class="simple">
+<li><p>Runxin Wang, &amp; Rongke Liu. (2014). A Novel Puncturing Scheme for Polar Codes. IEEE Communications Letters, 18(12), 2081–2084. <a class="reference external" href="https://doi.org/10.1109/LCOMM.2014.2364845">https://doi.org/10.1109/LCOMM.2014.2364845</a></p></li>
+</ul>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>myPC</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">PolarCode</span></code> class) – a polar code object created using the <code class="xref py py-class docutils literal notranslate"><span class="pre">PolarCode</span></code> class</p>
@@ -979,12 +1017,6 @@ Reference: Runxin Wang, &amp; Rongke Liu. (2014). A Novel Puncturing Scheme for 
 
 </dd></dl>
 
-</div>
-<div class="section" id="module-polarcodes">
-<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-polarcodes" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="polar-codes-in-python">
-<h3>Polar Codes in Python<a class="headerlink" href="#polar-codes-in-python" title="Permalink to this headline">¶</a></h3>
-</div>
 </div>
 </div>
 
